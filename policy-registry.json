@@ -1,0 +1,20 @@
+{
+  "banking_policy": {
+    "documentName": "banking_policy.txt",
+    "activeVersion": 2,
+    "versions": [
+      {
+        "version": 1,
+        "status": "indexed",
+        "effectiveFrom": "2026-01-01",
+        "expectedChunks": 2
+      },
+      {
+        "version": 2,
+        "status": "active",
+        "effectiveFrom": "2026-11-01",
+        "expectedChunks": 2
+      }
+    ]
+  }
+}
