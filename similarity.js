@@ -6,6 +6,7 @@ const sentences = [
 ];
 
 // Generate embeddings using Ollama
+
 async function generateEmbeddings(texts) {
     const response = await fetch(
         "http://localhost:11434/api/embed",
