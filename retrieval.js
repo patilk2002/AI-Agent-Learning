@@ -3,6 +3,7 @@ import "dotenv/config";
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { RAG_CONFIG } from "./rag-config.js";
 import { rerankDocuments } from "./reranker-client.js";
+import { fetchWithRetry } from "./http-utils.js";
 
 const client = new QdrantClient({
     url: process.env.QDRANT_URL,
@@ -21,6 +22,11 @@ async function generateQueryEmbedding(question) {
                 model: RAG_CONFIG.embeddingModel,
                 input: [`search_query: ${question}`]
             })
+        },
+        {
+            maxRetries: 2,
+            timeoutMs: 10000,
+            initialDelayMs: 500
         }
     );
 

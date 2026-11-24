@@ -1,12 +1,19 @@
 
 import { getActivePolicyVersion } from "./policy-registry.js";
 import { retrieveDocuments } from "./retrieval.js";
+import {
+    validateQuestion,
+    validatePolicyVersion,
+    validateDocumentId
+} from "./security.js";
+
 
 export async function retrieveActivePolicy(question, documentId) {
-
+    question = validateQuestion(question);
+    documentId = validateDocumentId(documentId);
     // Step 1: Get active policy version
     const activePolicy = await getActivePolicyVersion(documentId);
-
+    version = validatePolicyVersion(activePolicy);
     console.log("Active policy version:", activePolicy.version);
 
     // Step 2: Retrieve only chunks from active version
