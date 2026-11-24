@@ -1,15 +1,12 @@
 
 export const RAG_CONFIG = {
     collection: "banking_policies",
-
     embeddingModel: "nomic-embed-text",
-
     embeddingDimensions: 768,
 
-    retrievalLimit: 5,
+    // Retrieve more candidates initially
+    retrievalLimit: 10,
 
-    // Initial experimental threshold, not a confidence probability.
-    similarityThreshold: 0.50,
-
+    // Send only the best chunks to Groq
     maxContextChunks: 3
 };
